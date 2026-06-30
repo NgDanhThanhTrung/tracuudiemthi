@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Trang thông tin kỳ thi quốc gia 2026 - Sở Giáo dục và Đào tạo Hà Tĩnh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Content/Custom/Tracuu/Css/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="/Content/Custom/Tracuu/Css/frame.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="/Content/Custom/js/jquery.min.js"></script>
+    
+    <!-- CSS bổ sung để đảm bảo hiển thị đẹp mắt, cân đối và tương thích thiết bị di động -->
+    <style type="text/css">
+        .form-reg {
+            max-w: 500px;
+            margin: 20px auto;
+            padding: 25px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #eaeaea;
+        }
+        .q-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .q-list li {
+            margin-bottom: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 14px;
+        }
+        .form-control {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .form-control:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 5px rgba(0,86,179,0.25);
+        }
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .captcha-input {
+            flex: 1;
+        }
+        .captcha-img-wrapper {
+            display: flex;
+            align-items: center;
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 2px 5px;
+        }
+        #ImgCaptcha {
+            height: 34px;
+            width: 110px;
+            background: #ddd;
+            display: block;
+        }
+        #refreshCaptcha {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+            text-decoration: none;
+            color: #0056b3;
+        }
+        .btn-submit {
+            width: 100%;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #004085;
+        }
+        .btn-submit:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #err-msg {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+        /* Giao diện hiển thị kết quả */
+        .hd {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+            display: none;
+        }
+        .hd h4 {
+            margin: 0 0 10px 0;
+            color: #28a745;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        .result-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .result-item strong {
+            color: #495057;
+        }
+        #ts-mark {
+            display: block;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 15px;
+            color: #17a2b8;
+            margin-top: 5px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <!--//--Header----------------->
+    <div class="top-main">
+        <div class="wrap">
+            <div class="logo">
+                <h1>
+                    <a href="#" title="Trang thông tin kỳ thi tốt nghiệp THPT 2026">
+                        Sở Giáo dục và Đào tạo Hà Tĩnh<br />
+                        <span>TRANG THÔNG TIN KỲ THI TỐT NGHIỆP THPT 2026</span>
+                    </a>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <!--//--Main content----------------->
+    <div class="wrap">
+        <div class="q-info"><p></p></div>
+    </div>
+    
+    <div class="content-main">
+        <!-- Ràng buộc sự kiện submit của form để gọi hàm dosubmit() bằng javascript -->
+        <form id="SearchTSForm" method="post" onsubmit="dosubmit(); return false;">
+            <div class="form-reg">
+                <ul class="q-list">
+                    <li><h3 style="text-transform:uppercase;font-weight:bold;text-align:center; margin-bottom: 5px;">Sở Giáo dục và Đào tạo Hà Tĩnh</h3></li>
+                    <li><h2 style="text-align:center; margin-top: 0; margin-bottom: 25px; font-size: 20px; color: #111;">TRA CỨU ĐIỂM THI TỐT NGHIỆP THPT 2026</h2></li>
+                    
+                    <!-- Khôi phục trường nhập Số báo danh -->
+                    <li>
+                        <div class="form-group">
+                            <label for="Sobaodanh">Số báo danh <span style="color:red;">*</span></label>
+                            <input type="text" id="Sobaodanh" name="Sobaodanh" class="form-control" placeholder="Nhập số báo danh thí sinh..." required />
+                        </div>
+                    </li>
+
+                    <!-- Khôi phục trường nhập Mã xác nhận (Captcha) -->
+                    <li>
+                        <div class="form-group">
+                            <label for="Captcha">Mã xác nhận <span style="color:red;">*</span></label>
+                            <div class="captcha-container">
+                                <input type="text" id="Captcha" name="Captcha" class="form-control captcha-input" placeholder="Nhập mã xác nhận..." required />
+                                <div class="captcha-img-wrapper">
+                                    <img id="ImgCaptcha" src="/TraCuu/GetCaptcha?choose=1" alt="Mã xác nhận" onerror="this.onerror=null; this.src='https://placehold.co/110x34/cccccc/333333?text=CAPTCHA';" />
+                                    <button type="button" id="refreshCaptcha" title="Đổi mã xác nhận mới">🔄</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Nút bấm tra cứu -->
+                    <li>
+                        <button type="submit" id="btnsubmit" class="btn-submit">Tra cứu điểm</button>
+                    </li>
+
+                    <!-- Vùng thông báo lỗi -->
+                    <li>
+                        <div id="err-msg"></div>
+                    </li>
+                </ul>
+
+                <!-- Khung hiển thị kết quả điểm thi (Mặc định ẩn) -->
+                <div class="hd">
+                    <h4>Kết quả thi tốt nghiệp</h4>
+                    <div class="result-item"><strong>Họ tên:</strong> <span id="ts-name">N/A</span></div>
+                    <div class="result-item"><strong>Số báo danh:</strong> <span id="ts-sbd">N/A</span></div>
+                    <div class="result-item">
+                        <strong>Chi tiết điểm số:</strong>
+                        <div id="ts-mark">Đang cập nhật...</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--//--Footer----------------->
+    <div class="footer-main">
+        <div class="wrap">
+            <p>Sở Giáo dục và Đào tạo Hà Tĩnh</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Xử lý sự kiện nhấn làm mới captcha
+        $("#refreshCaptcha").click(function () {
+            $("#ImgCaptcha").attr("src", "/TraCuu/GetCaptcha?time=" + new Date().getTime() + "&choose=1");
+        });
+
+        $(document).ready(function () {
+            // Tải mã Captcha khởi động
+            $("#ImgCaptcha").attr("src", "/TraCuu/GetCaptcha?time=" + new Date().getTime() + "&choose=1");
+
+            // Tự động căn chỉnh chiều cao nội dung chính theo màn hình
+            $(window).resize(function () {
+                var minHeight = $(window).height() - $(".top-main").outerHeight() - $(".footer-main").outerHeight() - 65;
+                $(".content-main").css({ "min-height": minHeight });
+            });
+            var minHeight = $(window).height() - $(".top-main").outerHeight() - $(".footer-main").outerHeight() - 65;
+            $(".content-main").css({ "min-height": minHeight });
+        });
+
+        // Hàm xử lý gửi yêu cầu tra cứu AJAX
+        function dosubmit() {
+            $("#btnsubmit").attr("disabled", "disabled");
+            $("#err-msg").css("color", "#0056b3").html("Đang tiến hành tra cứu...");
+            $(".hd").hide();
+
+            $.ajax({
+                url: '/TraCuu/TraCuu',
+                type: 'POST',
+                data: $("#SearchTSForm").serialize(),
+                error: function (data) {
+                    $("#btnsubmit").removeAttr("disabled");
+                    $("#err-msg").css("color", "red").html("Không thể kết nối đến máy chủ tra cứu. Vui lòng thử lại sau.");
+                    $(".hd").hide();
+                    $("#ImgCaptcha").attr("src", "/TraCuu/GetCaptcha?time=" + new Date().getTime() + "&choose=1");
+                },
+                success: function (data) {
+                    $("#btnsubmit").removeAttr("disabled");
+                    
+                    if (data && data.Message != null) {
+                        // Hiển thị thông báo lỗi từ hệ thống
+                        $("#err-msg").css("color", "red").html(data.Message);
+                        $(".hd").hide();
+                    } else if (data && data.DIEM_THI) {
+                        // Cập nhật thông tin thí sinh và điểm thi lên giao diện
+                        $("#ts-name").html(data.HO_TEN || "Thí sinh tự do");
+                        $("#ts-sbd").html(data.SOBAODANH || $("#Sobaodanh").val());
+                        $("#ts-mark").html(data.DIEM_THI.replace(/ /g, "&nbsp;"));
+                        
+                        $("#err-msg").html("");
+                        $(".hd").show();
+                    } else {
+                        $("#err-msg").css("color", "red").html("Dữ liệu phản hồi từ máy chủ không hợp lệ.");
+                        $(".hd").hide();
+                    }
+                    
+                    // Cập nhật lại mã Captcha mới
+                    $("#ImgCaptcha").attr("src", "/TraCuu/GetCaptcha?time=" + new Date().getTime() + "&choose=1");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
